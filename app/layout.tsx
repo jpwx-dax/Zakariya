@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s — Zakariya Sayed",
   },
   description:
-    "Zakariya Sayed is a Digital Marketing & Business Operations professional with 4+ years bridging marketing, operations, strategy and execution — brand building, performance marketing, e-commerce and procurement.",
+    "Zakariya Sayed is a Digital Marketing & Business Operations professional with 6+ years bridging marketing, operations, strategy and execution — brand building, performance marketing, e-commerce and procurement.",
   keywords: [
     "Zakariya Sayed",
     "Digital Marketing",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Zakariya Sayed — Digital Marketing & Business Operations",
     description:
-      "4+ years bridging marketing, operations, strategy and execution. Brand building, performance marketing, e-commerce and business growth.",
+      "6+ years bridging marketing, operations, strategy and execution. Brand building, performance marketing, e-commerce and business growth.",
     url: siteUrl,
     siteName: "Zakariya Sayed",
     locale: "en_US",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Zakariya Sayed — Digital Marketing & Business Operations",
     description:
-      "4+ years bridging marketing, operations, strategy and execution.",
+      "6+ years bridging marketing, operations, strategy and execution.",
   },
   robots: { index: true, follow: true },
   alternates: { canonical: siteUrl },

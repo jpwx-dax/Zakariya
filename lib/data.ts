@@ -7,22 +7,23 @@ export const site = {
   role: "Digital Marketing & Business Operations",
   tagline:
     "I bridge marketing, operations and strategy — turning brand ambition into systems that ship, sell and scale.",
-  email: "imzakiii@icloud.com",
+  email: "s.zakariyaronaldino786@gmail.com",
   phone: "+91 8828485298",
   phoneHref: "+918828485298",
   location: "Mumbai, India",
-  linkedin: "https://www.linkedin.com/in/zakariya-sayed",
+  linkedin: "https://www.linkedin.com/in/zakariya-sayed-8b61941b2/",
   resume: "/resume.pdf",
 };
 
 export const about = {
-  years: "4+",
+  years: "6+",
   intro:
     "A results-driven operator working at the intersection of digital marketing, business operations and e-commerce.",
   paragraphs: [
-    "Over the past four years I've built brands from a blank page — standing up digital presence, running multi-platform campaigns, and owning the operational machinery behind them: procurement, vendor coordination, sales and customer support.",
+    "Over six years I've built brands from a blank page — standing up digital presence, running multi-platform campaigns, and owning the operational machinery behind them: procurement, vendor coordination, sales and customer support.",
+    "Today I lead marketing as Marketing Manager at a manufacturing business, where strategy and the shop floor sit side by side. Before that, three years in client servicing and strategy at a marketing agency sharpened how I build brands and translate them into performance.",
     "I'm equally comfortable writing the content strategy and closing the purchase order. That range is deliberate — great marketing means nothing if the operation behind it can't deliver, and I've spent my career making sure both hold.",
-    "A B.Com graduate and MBA candidate at DY Patil University, I pair a grounding in business and finance fundamentals with hands-on execution across the full commercial stack.",
+    "A B.Com background and an MBA in Logistics, Materials & Supply Chain Management from DY Patil University give me a grounding in business, finance and operations that few marketers carry.",
   ],
   focus: [
     "Business Operations",
@@ -48,32 +49,33 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
-    company: "Dot Syndicate",
-    role: "Account Manager — Client Servicing & Content Strategist",
-    period: "2022 — Present",
-    location: "Mumbai, India",
+    company: "Army Industries",
+    role: "Marketing Manager",
+    period: "Apr 2023 — Present",
+    location: "Navi Mumbai, India",
     summary:
-      "Owning client relationships and content strategy across a portfolio of brands, balancing creative ambition with measurable performance.",
+      "Leading marketing for an office-furniture manufacturer — owning the brand end-to-end while running the commercial engine behind it, from digital presence to e-commerce operations.",
     achievements: [
-      "Created and managed content across multiple social media platforms, maintaining a consistent brand voice at scale.",
-      "Monitored social media performance and improved audience engagement through continuous optimisation.",
-      "Grew social media engagement by 40% through sharper audience targeting and content optimisation.",
-      "Planned and executed influencer marketing campaigns end-to-end — identification, outreach, coordination, content approvals and performance tracking.",
-      "Maintained brand innovation and kept pace with the latest social trends while balancing each client's preferences and requirements.",
+      "Own the company's marketing function — brand, digital presence and demand — as its sole Marketing Manager.",
+      "Built the company's digital presence from scratch, including website, Google Business Profile and social media assets.",
+      "Created the full product catalogue independently, including product photography and design from scratch.",
+      "Manage customer inquiries, order processing and issue resolution through the Pepperfry marketplace.",
+      "Handle purchase and sales operations, including vendor coordination, procurement and order fulfilment.",
     ],
   },
   {
-    company: "Army Industries",
-    role: "Business Operations & Digital Marketing Executive",
-    period: "2021 — 2022",
+    company: "DotSyndicate",
+    role: "Client Servicing & Strategist",
+    period: "Mar 2020 — Apr 2023",
     location: "Mumbai, India",
     summary:
-      "Built the company's commercial engine from the ground up — from digital presence to end-to-end e-commerce operations.",
+      "Three years owning client relationships and content strategy across a portfolio of brands at a full-service marketing agency, balancing creative ambition with measurable performance.",
     achievements: [
-      "Built the company's digital presence from scratch, including website, Google Business Profile and social media assets.",
-      "Handled all purchase and sales operations, including vendor coordination, procurement and order fulfilment.",
-      "Managed customer inquiries, order processing and issue resolution through the Pepperfry marketplace.",
-      "Created the company's full product catalogue independently, including product photography and design from scratch.",
+      "Created and managed content across multiple social media platforms, maintaining a consistent brand voice at scale.",
+      "Grew social media engagement by 40% through sharper audience targeting and content optimisation.",
+      "Planned and executed influencer marketing campaigns end-to-end — identification, outreach, coordination, content approvals and performance tracking.",
+      "Monitored social media performance and improved audience engagement through continuous optimisation.",
+      "Maintained brand innovation and kept pace with the latest social trends while balancing each client's preferences and requirements.",
     ],
   },
 ];
@@ -123,8 +125,10 @@ export const skills: SkillGroup[] = [
     category: "Business",
     index: "05",
     skills: [
+      "Account Planning",
+      "Client Services",
+      "Strategic Planning",
       "Brand Building",
-      "Client Servicing",
       "Business Growth",
       "Marketplace Management",
     ],
@@ -214,24 +218,19 @@ export type Education = {
 
 export const education: Education[] = [
   {
-    qualification: "MBA",
+    qualification: "MBA — Logistics, Materials & Supply Chain Management",
     institution: "DY Patil University",
-    year: "2023 — 2025",
+    year: "2023 — 2024",
   },
   {
-    qualification: "B.Com",
-    institution: "R.D. National College",
-    year: "2021",
+    qualification: "B.Com — Business",
+    institution: "K V Pendharkar College of Arts, Science & Commerce",
+    year: "2019 — 2020",
   },
   {
-    qualification: "HSC — 12th",
-    institution: "KV Pendarkar College, Mumbai University",
-    year: "2018",
-  },
-  {
-    qualification: "ICSE — 10th",
-    institution: "Kohinoor International School",
-    year: "2016",
+    qualification: "HSC — Business / Commerce",
+    institution: "R.D. & S.H. National College",
+    year: "2016 — 2018",
   },
 ];
 
