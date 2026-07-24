@@ -9,7 +9,7 @@ import MagneticButton from "../MagneticButton";
 const details = [
   { label: "Email", value: site.email, href: `mailto:${site.email}` },
   { label: "Phone", value: site.phone, href: `tel:${site.phoneHref}` },
-  { label: "LinkedIn", value: "in/zakariya-sayed", href: site.linkedin },
+  { label: "LinkedIn", value: "in/zakariya-sayed-8b61941b2", href: site.linkedin },
   { label: "Location", value: site.location, href: undefined },
 ];
 

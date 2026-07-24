@@ -63,7 +63,7 @@ export default function Hero({ start }: { start: boolean }) {
         <p className="hidden font-sans text-sm text-paper/55 sm:block">
           {site.location}
           <br />
-          Est. 2021
+          Est. 2020
         </p>
       </motion.div>
 
