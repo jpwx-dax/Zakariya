@@ -1,0 +1,19 @@
+# Netlify configuration for the Next.js portfolio.
+# The official Next.js runtime (@netlify/plugin-nextjs) is installed automatically
+# by Netlify when a Next.js site is detected — no manual plugin install needed.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Match the Node version used locally / in CI.
+  NODE_VERSION = "20"
+
+# Optional: security-friendly headers for all routes.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
