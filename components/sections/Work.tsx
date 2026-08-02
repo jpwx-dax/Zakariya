@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { projects, Project } from "@/lib/data";
 import { FadeUp, RevealLines } from "../AnimatedText";
@@ -20,7 +21,7 @@ const gradients = [
 ];
 
 function Card({ project, index }: { project: Project; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLAnchorElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -30,7 +31,12 @@ function Card({ project, index }: { project: Project; index: number }) {
 
   return (
     <FadeUp delay={(index % 2) * 0.08}>
-      <div ref={ref} className="group cursor-pointer" data-cursor="hover">
+      <Link
+        href={`/work/${project.slug}`}
+        ref={ref}
+        className="group block cursor-pointer"
+        data-cursor="hover"
+      >
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink">
           <motion.div
             style={{ scale, y }}
@@ -86,7 +92,7 @@ function Card({ project, index }: { project: Project; index: number }) {
             </span>
           ))}
         </div>
-      </div>
+      </Link>
     </FadeUp>
   );
 }

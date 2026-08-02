@@ -137,6 +137,7 @@ export const skills: SkillGroup[] = [
 ];
 
 export type Project = {
+  slug: string;
   title: string;
   discipline: string;
   year: string;
@@ -146,6 +147,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "brand-building",
     title: "Brand Building",
     discipline: "Identity & Strategy",
     year: "Ongoing",
@@ -154,6 +156,7 @@ export const projects: Project[] = [
     tags: ["Positioning", "Voice", "Launch"],
   },
   {
+    slug: "social-media-strategy",
     title: "Social Media Strategy",
     discipline: "Content & Community",
     year: "2022",
@@ -162,6 +165,7 @@ export const projects: Project[] = [
     tags: ["Content", "Calendar", "Growth"],
   },
   {
+    slug: "operations-optimisation",
     title: "Operations Optimisation",
     discipline: "Business Operations",
     year: "2021",
@@ -170,6 +174,7 @@ export const projects: Project[] = [
     tags: ["Procurement", "Fulfilment", "Process"],
   },
   {
+    slug: "performance-marketing",
     title: "Performance Marketing",
     discipline: "Paid & Search",
     year: "2022",
@@ -178,6 +183,7 @@ export const projects: Project[] = [
     tags: ["Google Ads", "Meta", "ROAS"],
   },
   {
+    slug: "marketplace-management",
     title: "Marketplace Management",
     discipline: "E-commerce",
     year: "2021",
@@ -186,6 +192,7 @@ export const projects: Project[] = [
     tags: ["Pepperfry", "Catalogue", "Support"],
   },
   {
+    slug: "website-launch",
     title: "Website Launch",
     discipline: "Digital Presence",
     year: "2021",
@@ -194,6 +201,7 @@ export const projects: Project[] = [
     tags: ["Web", "GBP", "SEO"],
   },
   {
+    slug: "influencer-campaign",
     title: "Influencer Campaign",
     discipline: "Partnerships",
     year: "2022",
@@ -202,6 +210,7 @@ export const projects: Project[] = [
     tags: ["Outreach", "Approvals", "Tracking"],
   },
   {
+    slug: "product-photography",
     title: "Product Photography",
     discipline: "Content & Design",
     year: "2021",
@@ -210,6 +219,9 @@ export const projects: Project[] = [
     tags: ["Photography", "Catalogue", "Design"],
   },
 ];
+
+export const getProject = (slug: string) =>
+  projects.find((p) => p.slug === slug);
 
 export type Education = {
   qualification: string;
