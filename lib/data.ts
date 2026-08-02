@@ -12,7 +12,8 @@ export const site = {
   phoneHref: "+918828485298",
   location: "Mumbai, India",
   linkedin: "https://www.linkedin.com/in/zakariya-sayed-8b61941b2/",
-  resume: "/resume.pdf",
+  // Base path is empty except on GitHub Pages (served under /zzkii/).
+  resume: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/resume.pdf`,
 };
 
 export const about = {
