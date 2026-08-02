@@ -4,7 +4,9 @@
 // produce a fully static export and prefix all assets/routes with the repo
 // base path. Netlify and local dev are unaffected — they build normally.
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
-const basePath = isGitHubPages ? "/zzkii" : "";
+// Must exactly match the repo name (case-sensitive) — the project site is
+// served at https://<user>.github.io/Zakariya/
+const basePath = isGitHubPages ? "/Zakariya" : "";
 
 const nextConfig = {
   reactStrictMode: true,

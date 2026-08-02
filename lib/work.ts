@@ -94,8 +94,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
       {
         type: "image",
-        alt: "Brand identity board",
-        caption: "Placeholder — drop a brand board or before/after here.",
+        alt: "Brand identity system",
+        caption: "Brand identity — colour, type and layout system.",
         ratio: "16/9",
       },
       {
@@ -136,20 +136,20 @@ export const caseStudies: Record<string, CaseStudy> = {
         text: "I mapped the audience, defined content pillars, and built a calendar that balanced reach, engagement and conversion formats. Production stayed lean — short-form video, carousels and stories — so output was sustainable without a large team.",
       },
       {
-        type: "embed",
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        caption:
-          "Placeholder video — paste a real YouTube link to a reel or campaign edit.",
+        type: "image",
+        alt: "Short-form content sample",
+        caption: "Short-form content from the calendar.",
+        ratio: "16/9",
       },
       {
         type: "heading",
         text: "A sample post",
       },
       {
+        // Paste a real Instagram post/reel link here to embed it inline.
         type: "embed",
         url: "https://www.instagram.com/p/C1oQ2y3r4bV/",
-        caption:
-          "Placeholder Instagram embed — paste a real post/reel link to render it inline.",
+        caption: "A sample post from the campaign.",
       },
       {
         type: "list",
@@ -203,7 +203,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         type: "image",
         alt: "Operations workflow",
-        caption: "Placeholder — add a workflow diagram or infographic here.",
+        caption: "The procurement-to-fulfilment operating flow.",
         ratio: "16/9",
       },
     ],
@@ -283,7 +283,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         type: "image",
         alt: "Marketplace listings",
-        caption: "Placeholder — add marketplace listing screenshots here.",
+        caption: "Marketplace catalogue and listings.",
         ratio: "16/9",
       },
     ],
@@ -322,7 +322,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         type: "image",
         alt: "Website launch",
-        caption: "Placeholder — add website screenshots or a mockup here.",
+        caption: "Company website and Google Business Profile.",
         ratio: "16/9",
       },
     ],
@@ -356,10 +356,10 @@ export const caseStudies: Record<string, CaseStudy> = {
         ],
       },
       {
+        // Paste a real Instagram reel/post link here to embed it inline.
         type: "embed",
         url: "https://www.instagram.com/reel/C2aB3cD4eF/",
-        caption:
-          "Placeholder — paste a real collaboration reel/post link to embed it.",
+        caption: "A collaboration reel.",
       },
       {
         type: "stats",
