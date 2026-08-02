@@ -81,16 +81,25 @@ function Card({ project, index }: { project: Project; index: number }) {
               {project.description}
             </p>
           </div>
+          {/* Always-visible open affordance */}
+          <span className="mt-1 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-ink/25 text-lg text-ink transition-all duration-500 ease-expo group-hover:-rotate-45 group-hover:border-ink group-hover:bg-ink group-hover:text-paper">
+            →
+          </span>
         </div>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {project.tags.map((t) => (
-            <span
-              key={t}
-              className="rounded-full border border-ink/15 px-3 py-1 font-sans text-xs text-ink/55"
-            >
-              {t}
-            </span>
-          ))}
+        <div className="mt-4 flex items-center justify-between gap-4">
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((t) => (
+              <span
+                key={t}
+                className="rounded-full border border-ink/15 px-3 py-1 font-sans text-xs text-ink/55"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+          <span className="shrink-0 font-sans text-xs uppercase tracking-[0.16em] text-accent">
+            View case study
+          </span>
         </div>
       </Link>
     </FadeUp>
@@ -112,8 +121,8 @@ export default function Work() {
           </div>
           <FadeUp delay={0.1}>
             <p className="max-w-xs font-sans text-base leading-relaxed text-muted">
-              A selection of disciplines and engagements. Case studies available
-              on request.
+              A selection of disciplines and engagements — open any project for
+              the full case study.
             </p>
           </FadeUp>
         </div>
