@@ -125,6 +125,52 @@ export default function CaseStudyView({
           </div>
         </section>
 
+        {/* Canva deck */}
+        {project.deckEmbed && (
+          <section className="bg-paper pt-16 text-ink sm:pt-24">
+            <div className="container-x">
+              <FadeUp>
+                <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+                  <div>
+                    <span className="eyebrow text-ink/40">(The deck)</span>
+                    <h2 className="mt-3 font-display text-3xl tracking-tight sm:text-4xl">
+                      Presentation
+                    </h2>
+                  </div>
+                  {project.deck && (
+                    <a
+                      href={project.deck}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cursor="hover"
+                      className="inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3 text-sm font-medium uppercase tracking-[0.12em] text-paper transition-transform duration-500 ease-expo hover:-translate-y-0.5"
+                    >
+                      Open the full deck <span>↗</span>
+                    </a>
+                  )}
+                </div>
+              </FadeUp>
+              <FadeUp delay={0.05}>
+                <div className="relative w-full overflow-hidden rounded-2xl border border-ink/12 bg-cloud shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)] [aspect-ratio:16/9]">
+                  <iframe
+                    src={project.deckEmbed}
+                    title={`${project.title} — Canva deck`}
+                    loading="lazy"
+                    allowFullScreen
+                    allow="fullscreen"
+                    className="absolute inset-0 h-full w-full"
+                  />
+                </div>
+              </FadeUp>
+              <FadeUp delay={0.1}>
+                <p className="mt-3 font-sans text-sm text-muted">
+                  If the deck doesn&apos;t load, open it directly in Canva above.
+                </p>
+              </FadeUp>
+            </div>
+          </section>
+        )}
+
         {/* Body */}
         <section className="bg-paper py-20 text-ink sm:py-28">
           <div className="container-x">

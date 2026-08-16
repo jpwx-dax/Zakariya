@@ -98,7 +98,7 @@ function Card({ project, index }: { project: Project; index: number }) {
             ))}
           </div>
           <span className="shrink-0 font-sans text-xs uppercase tracking-[0.16em] text-accent">
-            View case study
+            {project.deck ? "View deck" : "View case study"}
           </span>
         </div>
       </Link>
