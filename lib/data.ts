@@ -143,8 +143,7 @@ export type Project = {
   year: string;
   description: string;
   tags: string[];
-  deck?: string; // Canva share link (opens in Canva)
-  deckEmbed?: string; // Canva /view?embed URL (renders inline)
+  deckPdf?: string; // path to the deck PDF in /public (base-path applied at render)
 };
 
 export const projects: Project[] = [
@@ -156,9 +155,7 @@ export const projects: Project[] = [
     description:
       "Standing up brand identity, voice and digital presence from a blank page — the foundation every campaign is built on.",
     tags: ["Positioning", "Voice", "Launch"],
-    deck: "https://canva.link/lk40dv9rmw5wckh",
-    deckEmbed:
-      "https://www.canva.com/design/DAHRFtMpclQ/FOD2oty0cAXwuW__Kq765A/view?embed",
+    deckPdf: "/decks/brand-building.pdf",
   },
   {
     slug: "social-media-strategy",
@@ -168,9 +165,7 @@ export const projects: Project[] = [
     description:
       "Full-funnel content systems across platforms, engineered for a 40% lift in audience engagement.",
     tags: ["Content", "Calendar", "Growth"],
-    deck: "https://canva.link/2no1tibnimuqomh",
-    deckEmbed:
-      "https://www.canva.com/design/DAHRUlWI2ic/Csj2Io5eyWJ_ZUaOf_931Q/view?embed",
+    deckPdf: "/decks/social-media-strategy.pdf",
   },
   {
     slug: "operations-optimisation",
@@ -180,9 +175,7 @@ export const projects: Project[] = [
     description:
       "Streamlining procurement, vendor coordination and fulfilment into a single, repeatable operating rhythm.",
     tags: ["Procurement", "Fulfilment", "Process"],
-    deck: "https://canva.link/u5alt7z9r7xehew",
-    deckEmbed:
-      "https://www.canva.com/design/DAHRUwfkv1Q/-ZwC_RNyfn5J_N2yborAIw/view?embed",
+    deckPdf: "/decks/operations-optimisation.pdf",
   },
   {
     slug: "performance-marketing",
@@ -192,9 +185,7 @@ export const projects: Project[] = [
     description:
       "Google and Meta campaigns tuned around audience targeting, measurement and cost-efficient acquisition.",
     tags: ["Google Ads", "Meta", "ROAS"],
-    deck: "https://canva.link/n0js5nquwiddtwo",
-    deckEmbed:
-      "https://www.canva.com/design/DAHSBdEvwkU/6FMXtReSZdnpO2HC9KCupw/view?embed",
+    deckPdf: "/decks/performance-marketing.pdf",
   },
   {
     slug: "marketplace-management",
@@ -204,9 +195,7 @@ export const projects: Project[] = [
     description:
       "End-to-end marketplace operations on Pepperfry — catalogue, orders, inquiries and issue resolution.",
     tags: ["Pepperfry", "Catalogue", "Support"],
-    deck: "https://canva.link/qtgniqfteu4peih",
-    deckEmbed:
-      "https://www.canva.com/design/DAHRPUo0TxA/dPXEgar1BQERshVA5wNkuQ/view?embed",
+    deckPdf: "/decks/marketplace-management.pdf",
   },
   {
     slug: "website-launch",

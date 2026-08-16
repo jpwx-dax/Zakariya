@@ -10,6 +10,7 @@ import { RevealLines, FadeUp } from "../AnimatedText";
 import CaseStudyContent from "./CaseStudyContent";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const gradients = [
   "from-[#1a1a1a] via-[#241a15] to-[#0d0d0d]",
@@ -125,8 +126,8 @@ export default function CaseStudyView({
           </div>
         </section>
 
-        {/* Canva deck */}
-        {project.deckEmbed && (
+        {/* Deck (PDF) */}
+        {project.deckPdf && (
           <section className="bg-paper pt-16 text-ink sm:pt-24">
             <div className="container-x">
               <FadeUp>
@@ -137,35 +138,53 @@ export default function CaseStudyView({
                       Presentation
                     </h2>
                   </div>
-                  {project.deck && (
+                  <div className="flex flex-wrap gap-3">
                     <a
-                      href={project.deck}
+                      href={`${BASE}${project.deckPdf}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor="hover"
-                      className="inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3 text-sm font-medium uppercase tracking-[0.12em] text-paper transition-transform duration-500 ease-expo hover:-translate-y-0.5"
+                      className="inline-flex items-center gap-3 rounded-full bg-ink px-7 py-3.5 text-sm font-medium uppercase tracking-[0.12em] text-paper shadow-[0_12px_30px_-12px_rgba(0,0,0,0.5)] transition-all duration-300 ease-expo hover:-translate-y-0.5 hover:bg-accent"
                     >
-                      Open the full deck <span>↗</span>
+                      Open the deck <span aria-hidden>↗</span>
                     </a>
-                  )}
+                    <a
+                      href={`${BASE}${project.deckPdf}`}
+                      download
+                      data-cursor="hover"
+                      className="inline-flex items-center gap-3 rounded-full border border-ink/30 px-7 py-3.5 text-sm font-medium uppercase tracking-[0.12em] text-ink transition-all duration-300 ease-expo hover:-translate-y-0.5 hover:border-ink hover:bg-ink hover:text-paper"
+                    >
+                      Download PDF <span aria-hidden>↓</span>
+                    </a>
+                  </div>
                 </div>
               </FadeUp>
               <FadeUp delay={0.05}>
-                <div className="relative w-full overflow-hidden rounded-2xl border border-ink/12 bg-cloud shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)] [aspect-ratio:16/9]">
-                  <iframe
-                    src={project.deckEmbed}
-                    title={`${project.title} — Canva deck`}
-                    loading="lazy"
-                    allowFullScreen
-                    allow="fullscreen"
-                    className="absolute inset-0 h-full w-full"
-                  />
-                </div>
-              </FadeUp>
-              <FadeUp delay={0.1}>
-                <p className="mt-3 font-sans text-sm text-muted">
-                  If the deck doesn&apos;t load, open it directly in Canva above.
-                </p>
+                <a
+                  href={`${BASE}${project.deckPdf}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="hover"
+                  className="group block"
+                >
+                  <div className="relative w-full overflow-hidden rounded-2xl border border-ink/12 bg-cloud shadow-[0_30px_80px_-40px_rgba(0,0,0,0.35)] [aspect-ratio:16/9]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`${BASE}${project.deckPdf
+                        .replace("/decks/", "/decks/posters/")
+                        .replace(".pdf", ".jpg")}`}
+                      alt={`${project.title} — deck cover`}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-expo group-hover:scale-[1.03]"
+                    />
+                    {/* click-to-open veil */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors duration-500 group-hover:bg-ink/30">
+                      <span className="flex items-center gap-2 rounded-full bg-paper px-6 py-3 text-sm font-medium uppercase tracking-[0.12em] text-ink opacity-0 shadow-lg transition-all duration-500 ease-expo group-hover:opacity-100">
+                        Open full deck ↗
+                      </span>
+                    </div>
+                  </div>
+                </a>
               </FadeUp>
             </div>
           </section>

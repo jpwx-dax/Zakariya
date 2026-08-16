@@ -7,6 +7,7 @@ import { projects, Project } from "@/lib/data";
 import { FadeUp, RevealLines } from "../AnimatedText";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 // Deterministic gradient placeholder per card — swap for real imagery later.
 const gradients = [
@@ -21,23 +22,24 @@ const gradients = [
 ];
 
 function Card({ project, index }: { project: Project; index: number }) {
-  const ref = useRef<HTMLAnchorElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
   const scale = useTransform(scrollYProgress, [0, 1], [1.12, 1]);
+  const deckHref = project.deckPdf ? `${BASE}${project.deckPdf}` : null;
 
   return (
     <FadeUp delay={(index % 2) * 0.08}>
-      <Link
-        href={`/work/${project.slug}`}
-        ref={ref}
-        className="group block cursor-pointer"
-        data-cursor="hover"
-      >
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink">
+      <div ref={ref} className="group">
+        <Link
+          href={`/work/${project.slug}`}
+          className="block cursor-pointer"
+          data-cursor="hover"
+        >
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink">
           <motion.div
             style={{ scale, y }}
             className={`absolute inset-0 bg-gradient-to-br ${
@@ -81,12 +83,14 @@ function Card({ project, index }: { project: Project; index: number }) {
               {project.description}
             </p>
           </div>
-          {/* Always-visible open affordance */}
-          <span className="mt-1 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-ink/25 text-lg text-ink transition-all duration-500 ease-expo group-hover:-rotate-45 group-hover:border-ink group-hover:bg-ink group-hover:text-paper">
-            →
-          </span>
-        </div>
-        <div className="mt-4 flex items-center justify-between gap-4">
+            {/* Always-visible open affordance */}
+            <span className="mt-1 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-ink/25 text-lg text-ink transition-all duration-500 ease-expo group-hover:-rotate-45 group-hover:border-ink group-hover:bg-ink group-hover:text-paper">
+              →
+            </span>
+          </div>
+        </Link>
+
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-2">
             {project.tags.map((t) => (
               <span
@@ -97,11 +101,28 @@ function Card({ project, index }: { project: Project; index: number }) {
               </span>
             ))}
           </div>
-          <span className="shrink-0 font-sans text-xs uppercase tracking-[0.16em] text-accent">
-            {project.deck ? "View deck" : "View case study"}
-          </span>
+          <div className="flex flex-wrap gap-2">
+            {deckHref && (
+              <a
+                href={deckHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="hover"
+                className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 font-sans text-xs font-medium uppercase tracking-[0.14em] text-paper transition-all duration-300 ease-expo hover:-translate-y-0.5 hover:bg-accent"
+              >
+                Preview deck <span aria-hidden>↗</span>
+              </a>
+            )}
+            <Link
+              href={`/work/${project.slug}`}
+              data-cursor="hover"
+              className="inline-flex items-center gap-2 rounded-full border border-ink/30 px-5 py-2.5 font-sans text-xs font-medium uppercase tracking-[0.14em] text-ink transition-all duration-300 ease-expo hover:-translate-y-0.5 hover:border-ink hover:bg-ink hover:text-paper"
+            >
+              Case study <span aria-hidden>→</span>
+            </Link>
+          </div>
         </div>
-      </Link>
+      </div>
     </FadeUp>
   );
 }
