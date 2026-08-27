@@ -1,128 +1,47 @@
 "use client";
 
-import { useRef } from "react";
-import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { projects, Project } from "@/lib/data";
 import { FadeUp, RevealLines } from "../AnimatedText";
 
-const EASE = [0.16, 1, 0.3, 1] as const;
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// Deterministic gradient placeholder per card — swap for real imagery later.
-const gradients = [
-  "from-[#1a1a1a] via-[#241a15] to-[#0d0d0d]",
-  "from-[#161616] via-[#1c1c22] to-[#0d0d0d]",
-  "from-[#1a1512] via-[#2a1a10] to-[#0d0d0d]",
-  "from-[#141414] via-[#101a18] to-[#0d0d0d]",
-  "from-[#181414] via-[#221410] to-[#0d0d0d]",
-  "from-[#141618] via-[#14181f] to-[#0d0d0d]",
-  "from-[#1a1613] via-[#281c12] to-[#0d0d0d]",
-  "from-[#151515] via-[#1e1a24] to-[#0d0d0d]",
-];
+// Only projects that have a deck are shown — each card is the deck's front
+// page, and clicking it opens the full deck (PDF).
+const decks = projects.filter((p) => p.deckPdf);
 
-function Card({ project, index }: { project: Project; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1.12, 1]);
-  const deckHref = project.deckPdf ? `${BASE}${project.deckPdf}` : null;
+function posterFor(p: Project) {
+  return `${BASE}${p
+    .deckPdf!.replace("/decks/", "/decks/posters/")
+    .replace(".pdf", ".jpg")}`;
+}
 
+function DeckCard({ project, index }: { project: Project; index: number }) {
   return (
     <FadeUp delay={(index % 2) * 0.08}>
-      <div ref={ref} className="group">
-        <Link
-          href={`/work/${project.slug}`}
-          className="block cursor-pointer"
-          data-cursor="hover"
-        >
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink">
-          <motion.div
-            style={{ scale, y }}
-            className={`absolute inset-0 bg-gradient-to-br ${
-              gradients[index % gradients.length]
-            }`}
+      <a
+        href={`${BASE}${project.deckPdf}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cursor="hover"
+        aria-label={`Open ${project.title} deck`}
+        className="group block overflow-hidden rounded-2xl border border-ink/10 bg-ink shadow-[0_20px_60px_-30px_rgba(0,0,0,0.4)]"
+      >
+        <div className="relative w-full overflow-hidden [aspect-ratio:16/9]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={posterFor(project)}
+            alt={`${project.title} — deck preview`}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-expo group-hover:scale-[1.04]"
           />
-          {/* faint grid texture */}
-          <div className="absolute inset-0 opacity-[0.15] [background-image:linear-gradient(to_right,rgba(255,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.4)_1px,transparent_1px)] [background-size:44px_44px]" />
-
-          <div className="absolute inset-0 flex flex-col justify-between p-7">
-            <div className="flex items-start justify-between">
-              <span className="font-sans text-xs uppercase tracking-[0.18em] text-paper/50">
-                {project.discipline}
-              </span>
-              <span className="font-sans text-xs text-paper/50">
-                {project.year}
-              </span>
-            </div>
-            <span className="font-display text-[7rem] leading-none text-paper/[0.07] transition-colors duration-500 group-hover:text-accent/25">
-              0{index + 1}
+          {/* hover veil + open cue */}
+          <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors duration-500 group-hover:bg-ink/35">
+            <span className="flex items-center gap-2 rounded-full bg-paper px-6 py-3 text-sm font-medium uppercase tracking-[0.12em] text-ink opacity-0 shadow-lg transition-all duration-500 ease-expo group-hover:opacity-100">
+              Open deck <span aria-hidden>↗</span>
             </span>
           </div>
-
-          {/* Hover veil + arrow */}
-          <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors duration-500 group-hover:bg-ink/20">
-            <motion.span
-              initial={false}
-              className="grid h-16 w-16 translate-y-3 place-items-center rounded-full bg-paper text-ink opacity-0 transition-all duration-500 ease-expo group-hover:translate-y-0 group-hover:opacity-100"
-            >
-              ↗
-            </motion.span>
-          </div>
         </div>
-
-        <div className="mt-5 flex items-start justify-between gap-6">
-          <div>
-            <h3 className="font-display text-2xl tracking-tight text-ink transition-transform duration-500 ease-expo group-hover:translate-x-1 sm:text-3xl">
-              {project.title}
-            </h3>
-            <p className="mt-2 max-w-md text-base leading-relaxed text-ink/60">
-              {project.description}
-            </p>
-          </div>
-            {/* Always-visible open affordance */}
-            <span className="mt-1 grid h-11 w-11 shrink-0 place-items-center rounded-full border border-ink/25 text-lg text-ink transition-all duration-500 ease-expo group-hover:-rotate-45 group-hover:border-ink group-hover:bg-ink group-hover:text-paper">
-              →
-            </span>
-          </div>
-        </Link>
-
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-ink/15 px-3 py-1 font-sans text-xs text-ink/55"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {deckHref && (
-              <a
-                href={deckHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="hover"
-                className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 font-sans text-xs font-medium uppercase tracking-[0.14em] text-paper transition-all duration-300 ease-expo hover:-translate-y-0.5 hover:bg-accent"
-              >
-                Preview deck <span aria-hidden>↗</span>
-              </a>
-            )}
-            <Link
-              href={`/work/${project.slug}`}
-              data-cursor="hover"
-              className="inline-flex items-center gap-2 rounded-full border border-ink/30 px-5 py-2.5 font-sans text-xs font-medium uppercase tracking-[0.14em] text-ink transition-all duration-300 ease-expo hover:-translate-y-0.5 hover:border-ink hover:bg-ink hover:text-paper"
-            >
-              Case study <span aria-hidden>→</span>
-            </Link>
-          </div>
-        </div>
-      </div>
+      </a>
     </FadeUp>
   );
 }
@@ -131,7 +50,7 @@ export default function Work() {
   return (
     <section id="work" className="bg-paper py-24 text-ink sm:py-32">
       <div className="container-x">
-        <div className="mb-16 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+        <div className="mb-14 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <div>
             <span className="eyebrow text-ink/40">(Selected Work)</span>
             <RevealLines
@@ -142,17 +61,15 @@ export default function Work() {
           </div>
           <FadeUp delay={0.1}>
             <p className="max-w-xs font-sans text-base leading-relaxed text-muted">
-              A selection of disciplines and engagements — open any project for
-              the full case study.
+              A selection of decks — tap any preview to open the full
+              presentation.
             </p>
           </FadeUp>
         </div>
 
-        <div className="grid gap-x-8 gap-y-16 md:grid-cols-2">
-          {projects.map((p, i) => (
-            <div key={p.title} className={i % 2 === 1 ? "md:mt-24" : ""}>
-              <Card project={p} index={i} />
-            </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {decks.map((p, i) => (
+            <DeckCard key={p.slug} project={p} index={i} />
           ))}
         </div>
       </div>
