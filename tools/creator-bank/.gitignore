@@ -1,0 +1,17 @@
+# Your actual DM data never belongs in git.
+bank/
+bank_*/
+*.xlsx
+creators.json
+creators.csv
+
+# Unzipped Instagram exports
+instagram-*/
+*export*/
+
+# Generated on demand by make_sample.py. Its timestamps are relative to the day
+# it runs, so committing it would rewrite every file on each regeneration.
+sample_export/
+
+__pycache__/
+*.pyc
